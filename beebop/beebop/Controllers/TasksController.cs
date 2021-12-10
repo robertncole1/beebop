@@ -26,6 +26,17 @@ namespace beebop.Controllers
             return Ok(_tasksRepo.GetAll());
         }
 
+        // Get single task from the database
+        [HttpGet("{id}")]
+        public IActionResult GetSingleTask(Guid id)
+        {
+            var task = _tasksRepo.GetTaskById(id);
+
+            if (task is null) return NotFound($"No task with id - {id} exists in the database");
+
+            return Ok(task);
+        }
+
         // Get all the parent's tasks from the database
         [HttpGet("{userId}/parent")]
         public IActionResult GetTasksByParent(Guid userId)
@@ -50,6 +61,17 @@ namespace beebop.Controllers
         {
             _tasksRepo.Add(task);
             return Created($"/robots/{task.id}", task);
+        }
+
+        // Update a robot
+        [HttpPut("update/{id}")]
+        public IActionResult UpdateTask(Guid id, Tasks task)
+        {
+            var taskToUpdate = _tasksRepo.GetTaskById(id);
+            if (taskToUpdate is null) return NotFound($"No task with id - {id} exists in the database");
+
+            var updatedTask = _tasksRepo.Update(id, task);
+            return Ok(updatedTask);
         }
 
         // Delete a single task

@@ -28,6 +28,16 @@ namespace beebop.DataAccess
             return tasks;
         }
 
+        internal Tasks GetTaskById(Guid id)
+        {
+            using var db = new SqlConnection(_connectionString);
+            var sql = @"SELECT * FROM Tasks
+                        WHERE id = @id";
+            var task = db.QuerySingleOrDefault<Tasks>(sql, new { id });
+            return task;
+
+        }
+
         internal IEnumerable<Tasks> GetParentTasks(Guid userId)
         {
             using var db = new SqlConnection(_connectionString);
@@ -56,6 +66,23 @@ namespace beebop.DataAccess
             task.id = id;
 
             return id;
+        }
+
+        internal object Update(Guid id, Tasks task)
+        {
+            using var db = new SqlConnection(_connectionString);
+            var sql = @"UPDATE Tasks
+                        SET caregiverId = @caregiverId,
+                        name = @name,
+                        description = @description,
+                        scheduled = @scheduled,
+                        completed = @completed
+                        OUTPUT INSERTED.*
+                        WHERE id = @id
+                        ";
+            task.id = id;
+            var updatedTask = db.QuerySingleOrDefault<Tasks>(sql, task);
+            return updatedTask;
         }
 
         internal void RemoveTask(Guid id)

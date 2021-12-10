@@ -27,6 +27,47 @@ namespace beebop.Controllers
             return Ok(_usersRepo.GetAll());
         }
 
+        // Get user by id from the database
+        [HttpGet("{id}")]
+        public IActionResult GetSingleUser(Guid id)
+        {
+            var user = _usersRepo.GetUserById(id);
+
+            if (user is null) return NotFound($"No user with id - {id} exists in the database");
+
+            return Ok(user);
+        }
+
+        // Get user by google id from the database
+        [HttpGet("uid/{id}")]
+        public IActionResult GetSingleUserByGoogleId(string id)
+        {
+            var user = _usersRepo.GetUserByGoogleId(id);
+
+            if (user is null) return Ok(null);
+
+            return Ok(user);
+        }
+
+        // Add a single user
+        [HttpPost]
+        public IActionResult AddSingleUser(Users user)
+        {
+            _usersRepo.Add(user);
+            return Created($"/users/{user.id}", user);
+        }
+
+        // update a single user
+        [HttpPut("{id}")]
+        public IActionResult UpdateUser(Guid id, Users user)
+        {
+            var userToUpdate = _usersRepo.GetUserById(id);
+            if (userToUpdate is null) return NotFound($"No user with id - {id} exists in the database");
+
+            var updatedUser = _usersRepo.Update(id, user);
+            return Ok(updatedUser);
+        }
+
         //// Get All Caregivers or Parents by boolean //
         [HttpGet("caregivers/{isParent}")]
         public IActionResult GetAllCaregiverUsers(string isParent)
