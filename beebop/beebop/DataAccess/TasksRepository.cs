@@ -45,5 +45,27 @@ namespace beebop.DataAccess
             var task = db.Query<Tasks>(sql, new { caregiverId });
             return task;
         }
+
+        internal Guid Add(Tasks task)
+        {
+            using var db = new SqlConnection(_connectionString);
+            var sql = @"INSERT INTO Tasks(userId, caregiverId, name, description, scheduled, completed)
+                        OUTPUT INSERTED.id
+                        VALUES(@userId, @caregiverId, @name, @description, @scheduled, @completed)";
+            var id = db.ExecuteScalar<Guid>(sql, task);
+            task.id = id;
+
+            return id;
+        }
+
+        internal void RemoveTask(Guid id)
+        {
+            using var db = new SqlConnection(_connectionString);
+            var sql = @"DELETE
+                        FROM Tasks
+                        WHERE id = @id";
+
+            db.Execute(sql, new { id });
+        }
     }
 }

@@ -43,5 +43,21 @@ namespace beebop.Controllers
             if (task is null) return NotFound($"You have no tasks");
             return Ok(task);
         }
+
+        // Add a single task
+        [HttpPost]
+        public IActionResult AddSingleTask(Tasks task)
+        {
+            _tasksRepo.Add(task);
+            return Created($"/robots/{task.id}", task);
+        }
+
+        // Delete a single task
+        [HttpDelete("deleteTask/{id}")]
+        public IActionResult RemoveOrder(Guid id)
+        {
+            _tasksRepo.RemoveTask(id);
+            return Ok();
+        }
     }
 }
