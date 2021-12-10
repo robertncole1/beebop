@@ -49,6 +49,35 @@ namespace beebop.DataAccess
 
         }
 
+        internal Guid Add(Users user)
+        {
+            using var db = new SqlConnection(_connectionString);
+            var sql = @"INSERT INTO Users(firstName, lastName, isParent)
+                        OUTPUT INSERTED.id
+                        VALUES(@firstName, @lastName, @isParent)";
+            var id = db.ExecuteScalar<Guid>(sql, user);
+            user.id = id;
+
+            return id;
+
+        }
+
+        internal object Update(Guid id, Users userToUpdate)
+        {
+            using var db = new SqlConnection(_connectionString);
+            var sql = @" UPDATE Users
+                         SET firstName = @firstName,
+                         lastName = @lastName,
+                         isParent = @isParent
+                         OUTPUT INSERTED.*
+                         WHERE id = @id
+                        ";
+
+            userToUpdate.id = id;
+            var updatedUser = db.QuerySingleOrDefault<Users>(sql, userToUpdate);
+            return updatedUser;
+        }
+
         internal IEnumerable<Users> GetAllCaregiversOrParents(string isParent)
         {
             using var db = new SqlConnection(_connectionString);
