@@ -17,8 +17,8 @@ namespace beebop.Models
 
         public string description { get; set; }
 
-        public DateTime scheduled { get; set; }
+        public string scheduled { get; set; }
 
-        public DateTime completed { get; set; }
+        public string completed { get; set; }
     }
 }
