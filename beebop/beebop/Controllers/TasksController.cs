@@ -32,7 +32,7 @@ namespace beebop.Controllers
         {
             var task = _tasksRepo.GetTaskById(id);
 
-            if (task is null) return NotFound($"No robot with id - {id} exists in the database");
+            if (task is null) return NotFound($"No task with id - {id} exists in the database");
 
             return Ok(task);
         }
@@ -68,7 +68,7 @@ namespace beebop.Controllers
         public IActionResult UpdateTask(Guid id, Tasks task)
         {
             var taskToUpdate = _tasksRepo.GetTaskById(id);
-            if (taskToUpdate is null) return NotFound($"No robot with id - {id} exists in the database");
+            if (taskToUpdate is null) return NotFound($"No task with id - {id} exists in the database");
 
             var updatedTask = _tasksRepo.Update(id, task);
             return Ok(updatedTask);

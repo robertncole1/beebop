@@ -39,6 +39,16 @@ namespace beebop.DataAccess
 
         }
 
+        internal Users GetUserByGoogleId(string googleId)
+        {
+            using var db = new SqlConnection(_connectionString);
+            var sql = @"SELECT * FROM Users
+                        WHERE googleId = @googleId";
+            var user = db.QuerySingleOrDefault<Users>(sql, new { googleId });
+            return user;
+
+        }
+
         internal IEnumerable<Users> GetAllCaregiversOrParents(string isParent)
         {
             using var db = new SqlConnection(_connectionString);
