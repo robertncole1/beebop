@@ -38,30 +38,21 @@ namespace beebop.DataAccess
 
         }
 
-        internal IEnumerable<Tasks> GetParentTasks(Guid userId)
+        internal IEnumerable<Tasks> GetBabyTasks(Guid babyId)
         {
             using var db = new SqlConnection(_connectionString);
             var sql = @"SELECT * FROM Tasks
-                        WHERE Tasks.userId = @userId";
-            var task = db.Query<Tasks>(sql, new { userId });
-            return task;
-        }
-
-        internal IEnumerable<Tasks> GetCaregiverTasks(Guid caregiverId)
-        {
-            using var db = new SqlConnection(_connectionString);
-            var sql = @"SELECT * FROM Tasks
-                        WHERE Tasks.caregiverId = @caregiverId";
-            var task = db.Query<Tasks>(sql, new { caregiverId });
+                        WHERE Tasks.babyId = @babyId";
+            var task = db.Query<Tasks>(sql, new { babyId });
             return task;
         }
 
         internal Guid Add(Tasks task)
         {
             using var db = new SqlConnection(_connectionString);
-            var sql = @"INSERT INTO Tasks(userId, caregiverId, name, description, scheduled, completed)
+            var sql = @"INSERT INTO Tasks(babyId, name, description, scheduled, completed)
                         OUTPUT INSERTED.id
-                        VALUES(@userId, @caregiverId, @name, @description, @scheduled, @completed)";
+                        VALUES(@babyId, @name, @description, @scheduled, @completed)";
             var id = db.ExecuteScalar<Guid>(sql, task);
             task.id = id;
 
@@ -72,7 +63,7 @@ namespace beebop.DataAccess
         {
             using var db = new SqlConnection(_connectionString);
             var sql = @"UPDATE Tasks
-                        SET caregiverId = @caregiverId,
+                        SET babyId = @babyId,
                         name = @name,
                         description = @description,
                         scheduled = @scheduled,
@@ -85,7 +76,7 @@ namespace beebop.DataAccess
             return updatedTask;
         }
 
-        internal void RemoveTask(Guid id)
+        internal void Remove(Guid id)
         {
             using var db = new SqlConnection(_connectionString);
             var sql = @"DELETE

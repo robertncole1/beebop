@@ -30,6 +30,7 @@ namespace beebop
             services.AddSingleton<IConfiguration>(Configuration);
             services.AddTransient<UserRepository>();
             services.AddTransient<TasksRepository>();
+            services.AddTransient<BabiesRepository>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

@@ -68,19 +68,12 @@ namespace beebop.Controllers
             return Ok(updatedUser);
         }
 
-        //// Get All Caregivers or Parents by boolean //
-        [HttpGet("caregivers/{isParent}")]
-        public IActionResult GetAllCaregiverUsers(string isParent)
+        //// Get All Parents //
+        [HttpGet("parents/{isParent}")]
+        public IActionResult GetAllParentUsers(bool isParent)
         {
-            return Ok(_usersRepo.GetAllCaregiversOrParents(isParent));
+            return Ok(_usersRepo.GetAllParents(isParent));
         }
-
-        ////// Get All Parents //
-        //[HttpGet("parents/{isParent}")]
-        //public IActionResult GetAllParentUsers()
-        //{
-        //    return Ok(_usersRepo.GetAllParents());
-        //}
 
     }
 }
