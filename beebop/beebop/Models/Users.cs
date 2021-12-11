@@ -13,6 +13,7 @@ namespace beebop.Models
 
         public string lastName { get; set; }
 
-        public bool isParent { get; set; }
+        public bool? isParent { get; set; }
+
     }
 }

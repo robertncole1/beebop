@@ -37,20 +37,11 @@ namespace beebop.Controllers
             return Ok(task);
         }
 
-        // Get all the parent's tasks from the database
-        [HttpGet("{userId}/parent")]
-        public IActionResult GetTasksByParent(Guid userId)
+        // Get all the baby's tasks from the database
+        [HttpGet("babies/{babyId}")]
+        public IActionResult GetTasksByBaby(Guid babyId)
         {
-            var task = _tasksRepo.GetParentTasks(userId);
-            if (task is null) return NotFound($"You have no tasks");
-            return Ok(task);
-        }
-
-        // Get all the caregivers's tasks from the database
-        [HttpGet("{caregiverId}/caregiver")]
-        public IActionResult GetTasksByCaregiver(Guid caregiverId)
-        {
-            var task = _tasksRepo.GetCaregiverTasks(caregiverId);
+            var task = _tasksRepo.GetBabyTasks(babyId);
             if (task is null) return NotFound($"You have no tasks");
             return Ok(task);
         }
@@ -60,10 +51,10 @@ namespace beebop.Controllers
         public IActionResult AddSingleTask(Tasks task)
         {
             _tasksRepo.Add(task);
-            return Created($"/robots/{task.id}", task);
+            return Created($"/tasks/{task.id}", task);
         }
 
-        // Update a robot
+        // Update a task
         [HttpPut("update/{id}")]
         public IActionResult UpdateTask(Guid id, Tasks task)
         {
@@ -76,9 +67,9 @@ namespace beebop.Controllers
 
         // Delete a single task
         [HttpDelete("deleteTask/{id}")]
-        public IActionResult RemoveOrder(Guid id)
+        public IActionResult RemoveTask(Guid id)
         {
-            _tasksRepo.RemoveTask(id);
+            _tasksRepo.Remove(id);
             return Ok();
         }
     }

@@ -78,35 +78,15 @@ namespace beebop.DataAccess
             return updatedUser;
         }
 
-        internal IEnumerable<Users> GetAllCaregiversOrParents(string isParent)
+        internal IEnumerable<Users> GetAllParents(bool isParent)
         {
             using var db = new SqlConnection(_connectionString);
-            var sql = @"SELECT * FROM Users 
-                        WHERE isParent = @isParent";
+
+            var sql = @"Select * From Users
+                WHERE isParent = @isParent";
             var users = db.Query<Users>(sql, new { isParent });
 
             return users;
         }
-
-        //internal IEnumerable<Users> GetAllParents(bool isParent)
-        //{
-        //    using var db = new SqlConnection(_connectionString);
-        //    var sql = @"SELECT * FROM Users 
-        //                WHERE isParent = @isParent";
-        //    var users = db.Query<Users>(sql, new { isParent });
-
-        //    return users;
-        //}
-
-        //internal IEnumerable<Users> GetAllParents()
-        //{
-        //    using var db = new SqlConnection(_connectionString);
-
-        //    var sql = @"Select * From Users
-        //        WHERE isParent = 1";
-        //    var users = db.Query<Users>(sql);
-
-        //    return users;
-        //}
     }
 }

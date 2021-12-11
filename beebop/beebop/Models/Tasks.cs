@@ -9,9 +9,7 @@ namespace beebop.Models
     {
         public Guid id { get; set; }
 
-        public Guid userId { get; set; }
-
-        public string caregiverId { get; set; }
+        public Guid babyId { get; set; }
 
         public string name { get; set; }
 
