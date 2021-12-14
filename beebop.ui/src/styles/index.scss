@@ -1,5 +1,10 @@
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 @import 'variables';
+@import 'homeStyles';
+@font-face {
+  font-family: Buffalo;
+  src: url('../Buffalo.otf');
+}
 
 body {
   background-color: $favColor;

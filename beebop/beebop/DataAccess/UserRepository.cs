@@ -52,9 +52,9 @@ namespace beebop.DataAccess
         internal Guid Add(Users user)
         {
             using var db = new SqlConnection(_connectionString);
-            var sql = @"INSERT INTO Users(firstName, lastName, isParent)
+            var sql = @"INSERT INTO Users(firstName, lastName, email, isParent, googleId)
                         OUTPUT INSERTED.id
-                        VALUES(@firstName, @lastName, @isParent)";
+                        VALUES(@firstName, @lastName, @email, @isParent, @googleId)";
             var id = db.ExecuteScalar<Guid>(sql, user);
             user.id = id;
 
@@ -68,6 +68,7 @@ namespace beebop.DataAccess
             var sql = @" UPDATE Users
                          SET firstName = @firstName,
                          lastName = @lastName,
+                         email = @Email,
                          isParent = @isParent
                          OUTPUT INSERTED.*
                          WHERE id = @id

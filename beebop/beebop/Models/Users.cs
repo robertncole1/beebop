@@ -13,7 +13,11 @@ namespace beebop.Models
 
         public string lastName { get; set; }
 
+        public string email { get; set; }
+
         public bool? isParent { get; set; }
+        
+        public string googleId { get; set; }
 
     }
 }
