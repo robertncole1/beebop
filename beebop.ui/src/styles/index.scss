@@ -1,11 +1,16 @@
 @import 'variables';
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 @import 'homeStyles';
+@import 'aboutStyles';
 @font-face {
   font-family: Buffalo;
   src: url('../Buffalo.otf');
 }
 
 body {
-  background-color: $favColor !important;
+  background-color: $paleYellow !important;
+}
+
+.nav {
+  border-bottom: 1px solid rgb(197, 197, 197);
 }
