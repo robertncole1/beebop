@@ -1,5 +1,5 @@
-@import "~@fortawesome/fontawesome-free/css/all.min.css";
 @import 'variables';
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
 @import 'homeStyles';
 @font-face {
   font-family: Buffalo;
@@ -7,5 +7,5 @@
 }
 
 body {
-  background-color: $favColor;
+  background-color: $favColor !important;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Container, Row, Col
+  Container, Row, Col, Button
 } from 'reactstrap';
 
 export default function HeroImage() {
@@ -14,6 +14,7 @@ export default function HeroImage() {
           <div className="hero-text">
             <h2>Built for Babies and Busy Bees!</h2>
           </div>
+          <Button className='home-btn'>Get Started</Button>
         </Col>
       </Row>
     </Container>

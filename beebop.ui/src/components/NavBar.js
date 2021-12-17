@@ -22,8 +22,8 @@ const NavBar = ({ user, setUser }) => {
       <Navbar className="nav" light expand="md">
         <NavbarBrand href="/">
           <img
-          src=""
-          width="200"
+          src="https://user-images.githubusercontent.com/76854545/146072491-2e475bf8-8196-481d-8a3e-45995d0edb01.png"
+          width="170"
           className="d-inline-block align-top"
           alt="beebop logo"
         />
