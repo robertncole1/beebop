@@ -31,7 +31,6 @@ const signInUser = (setUser) => {
       createUser(userInfo).then(setUser);
       window.location.href = '/';
     }
-    console.warn(u);
   });
 };
 const signOutUser = () => new Promise((resolve, reject) => {

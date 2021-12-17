@@ -10,7 +10,7 @@ import { getSingleUserByGoogleId } from '../helpers/data/userData';
 
 function App() {
   // When you set up firebase add setUser method and change useState to null.
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
   // Checking for authenticated users. You must set up firebase authentication for this to work!
   useEffect(() => {
     firebase.auth().onAuthStateChanged((authed) => {
