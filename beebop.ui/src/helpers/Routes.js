@@ -5,6 +5,7 @@ import PrivateRoute from './PrivateRoute';
 import Home from '../views/Home';
 import About from '../views/About';
 import GetStarted from '../views/GetStarted';
+import CreateBaby from '../views/CreateBaby';
 
 function Routes({ user, setUser }) {
   return (
@@ -12,6 +13,7 @@ function Routes({ user, setUser }) {
       <Switch>
         <Route exact path="/" component={() => <Home user={user}/>} />
         <Route exact path="/about" component={() => <About user={user}/>} />
+        <Route exact path="/add-baby" component={() => <CreateBaby user={user} setUser={setUser}/>} />
         {/* <Route exact path="/get-started" component={() => <GetStarted user={user} setUser={setUser} />} /> */}
         <PrivateRoute exact path="/get-started/:id" component={() => <GetStarted user={user} setUser={setUser}/>} user={user}/>
       </Switch>

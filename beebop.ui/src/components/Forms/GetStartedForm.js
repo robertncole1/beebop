@@ -17,13 +17,6 @@ export default function GetStartedForm({ user, setUser }) {
     getSingleUser(id).then(setUserObject);
   }, []);
 
-  // const handleInputChange = (e) => {
-  //   setUserObject((prevState) => ({
-  //     ...prevState,
-  //     [e.target.name]: e.target.checked
-  //   }));
-  // };
-
   const handleCheckBox = () => {
     setIsTrue(!isTrue);
   };
@@ -40,6 +33,9 @@ export default function GetStartedForm({ user, setUser }) {
 
   return (
     <Form onSubmit={handleSubmit}>
+      <Label>
+        Check the box below if you are a parent. If you are a caregiver, please let it unchecked.
+      </Label>
         <FormGroup check>
           <Input
             type="checkbox"

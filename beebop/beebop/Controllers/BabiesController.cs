@@ -14,10 +14,14 @@ namespace beebop.Controllers
     public class BabiesController : ControllerBase
     {
         BabiesRepository _babiesRepo;
+        UserRepository _userRepo;
+        public string FirebaseUid => User.FindFirst(claim => claim.Type == "user_id").Value;
 
-        public BabiesController(BabiesRepository babiesRepo)
+
+        public BabiesController(BabiesRepository babiesRepo,UserRepository userRepo)
         {
             _babiesRepo = babiesRepo;
+            _userRepo = userRepo;
         }
         // Get all the babies from the database
         [HttpGet]
@@ -39,8 +43,13 @@ namespace beebop.Controllers
 
         // Add a single baby
         [HttpPost]
-        public IActionResult AddSingleTask(Babies baby)
+        public IActionResult AddSingleBaby(Babies baby)
         {
+            //get user by the currently logged in firebase user
+            var user = _userRepo.GetUserByGoogleId(FirebaseUid);
+            //set the user id for the baby to the currently logged in user's user.id
+            baby.userId = user.id;
+
             _babiesRepo.Add(baby);
             return Created($"/babies/{baby.id}", baby);
         }
