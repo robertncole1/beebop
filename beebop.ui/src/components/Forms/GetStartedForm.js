@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import {
   Form, FormGroup, Label, Input, Button
 } from 'reactstrap';
@@ -12,6 +12,7 @@ export default function GetStartedForm({ user, setUser }) {
   const [userObject, setUserObject] = useState({
     isParent: user?.isParent || false,
   });
+  const history = useHistory();
 
   useEffect(() => {
     getSingleUser(id).then(setUserObject);
@@ -25,9 +26,11 @@ export default function GetStartedForm({ user, setUser }) {
     if (isTrue) {
       userObject.isParent = true;
       updateUser(id, userObject).then((resp) => setUser(resp.data));
+      history.push('/add-baby');
     } else {
       userObject.isParent = false;
       updateUser(id, userObject).then((resp) => setUser(resp.data));
+      history.push('/tasks');
     }
   };
 

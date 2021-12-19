@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import {
   Form, Row, Col, FormGroup, Label, Input, Button, Container,
 } from 'reactstrap';
@@ -34,11 +35,14 @@ export default function BabyForm() {
     return () => clearTimeout(timer);
   }, [visible]);
 
+  const history = useHistory();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     createBaby(baby).then((response) => {
       setBaby(response);
     });
+    history.push('/baby');
     setVisible(true);
   };
 
@@ -59,7 +63,7 @@ export default function BabyForm() {
       <Row form>
         <Col md={6}>
           <FormGroup>
-            <Label for="robotTitle">Your Babys Name</Label>
+            <Label for="babyName">Your Babys Name</Label>
             <Input
               type="text"
               name="name"
@@ -101,7 +105,7 @@ export default function BabyForm() {
       </FormGroup>
         </Col>
       </Row>
-      <Button>Add Robot</Button>
+      <Button>Add Baby</Button>
     </Form>
           </Col>
         </Row>

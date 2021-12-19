@@ -38,6 +38,9 @@ const NavBar = ({ user, setUser }) => {
               <Link className="nav-link" to="/add-baby">Add Your Baby</Link>
             </NavItem>
             <NavItem>
+              <Link className="nav-link" to="/baby">Your Baby</Link>
+            </NavItem>
+            <NavItem>
               <Link className="nav-link" to={`/get-started/${user?.id}`}>Get Started</Link>
             </NavItem>
           </Nav><div className='auth-btn-container'>

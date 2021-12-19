@@ -4,7 +4,7 @@ import { apiConfig } from '../apiKeys';
 const { apiUrl } = apiConfig;
 
 const getBabies = () => new Promise((resolve, reject) => {
-  axios.get(`${apiUrl}/Babies/`).then((response) => resolve(response.data)).catch(reject);
+  axios.get(`${apiUrl}/Babies`).then((response) => resolve(response.data)).catch(reject);
 });
 
 const getSingleBaby = (id) => new Promise((resolve, reject) => {
