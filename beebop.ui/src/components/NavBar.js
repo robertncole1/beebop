@@ -34,15 +34,32 @@ const NavBar = ({ user, setUser }) => {
             <NavItem>
               <Link className="nav-link" to="/about">About Us</Link>
             </NavItem>
-            <NavItem>
-              <Link className="nav-link" to="/add-baby">Add Your Baby</Link>
-            </NavItem>
-            <NavItem>
-              <Link className="nav-link" to="/baby">Your Baby</Link>
-            </NavItem>
-            <NavItem>
-              <Link className="nav-link" to={`/get-started/${user?.id}`}>Get Started</Link>
-            </NavItem>
+            {
+              user
+                ? <NavItem>
+                  <Link className="nav-link" to={`/get-started/${user?.id}`}>Get Started</Link>
+                  </NavItem>
+                : ''
+            }
+            {
+              user.isParent === true
+              && <>
+                <NavItem>
+                  <Link className="nav-link" to="/add-baby">Add Your Baby</Link>
+                </NavItem>
+                <NavItem>
+                  <Link className="nav-link" to="/baby">Your Baby</Link>
+                </NavItem>
+              </>
+            }
+            {
+              user.isParent === false
+              && <>
+                <NavItem>
+                  <Link className="nav-link" to="/caregiver-baby">Your Client&apos;s Baby</Link>
+                </NavItem>
+              </>
+            }
           </Nav><div className='auth-btn-container'>
                 {
                   // eslint-disable-next-line no-nested-ternary

@@ -7,9 +7,8 @@ import {
 
 function BabyCard({ ...babyObj }) {
   const history = useHistory();
-
   const handleClick = () => {
-    history.push('/tasks');
+    history.push(`/tasks/${babyObj.id}`);
   };
 
   return (
@@ -19,8 +18,8 @@ function BabyCard({ ...babyObj }) {
       <CardText>
         Age: {babyObj.age}
       </CardText>
-      <Button variant="primary">Edit Your Babys Information</Button>
-      <Button variant="primary" onClick={handleClick}>View Your Babys Tasks</Button>
+      <Button variant="primary">Edit Your Baby&apos;s Information</Button>
+      <Button variant="primary" onClick={() => handleClick()}>View Your Baby&apos;s Tasks</Button>
     </CardBody>
   </Card>
   );

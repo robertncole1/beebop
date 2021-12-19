@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from 'react';
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 // import { getSingleBaby } from '../helpers/data/babyData';
-import { getTasks } from '../helpers/data/taskData';
+import { getBabyTask } from '../helpers/data/taskData';
 import TaskCard from '../components/TaskCard';
 
-function Tasks({ babyObj }) {
+function Tasks() {
   const [tasks, setTasks] = useState([]);
+  const { id } = useParams();
 
   useEffect(() => {
-    getTasks().then((response) => setTasks(response));
+    getBabyTask(id).then((response) => setTasks(response));
   }, []);
 
   return (
     <>
-      <h1 className="cart-title">Your Babys Tasks</h1>
+      <h1 className="page-title">Your Baby&apos;s Tasks</h1>
       {tasks.length === 0 && <h2>No Tasks for Your Baby</h2>}
-      <div className="baby-container">
-        {tasks?.filter((task) => task.babyId === babyObj.id).map((taskObj) => (
+      <div className="task-container">
+        {tasks.map((taskObj) => (
           <TaskCard key={taskObj.id}
             {...taskObj}
           />

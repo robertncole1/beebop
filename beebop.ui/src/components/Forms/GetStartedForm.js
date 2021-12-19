@@ -30,7 +30,7 @@ export default function GetStartedForm({ user, setUser }) {
     } else {
       userObject.isParent = false;
       updateUser(id, userObject).then((resp) => setUser(resp.data));
-      history.push('/tasks');
+      history.push('/caregiver-baby');
     }
   };
 

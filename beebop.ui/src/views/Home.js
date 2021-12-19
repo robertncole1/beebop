@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import HeroImage from '../components/HeroImage';
 
-function Home() {
+function Home({ user }) {
   return (
     <>
-      <HeroImage/>
+      <HeroImage user={user} />
     </>
   );
 }

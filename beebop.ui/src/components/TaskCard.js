@@ -5,7 +5,7 @@ import {
 
 export default function TaskCard({ ...taskObj }) {
   return (
-    <div className="cart-table">
+    <div className="task-table">
       <Table striped bordered hover>
         <tbody>
           <tr>

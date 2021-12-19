@@ -1,9 +1,18 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import {
   Container, Row, Col, Button
 } from 'reactstrap';
+import { signInUser } from '../helpers/auth';
 
-export default function HeroImage() {
+export default function HeroImage({ user, setUser }) {
+  const history = useHistory();
+
+  const handleClick = () => {
+    history.push(`/get-started/${user?.id}`);
+  };
+
   return (
     <div className="hero-image">
     <Container>
@@ -14,10 +23,19 @@ export default function HeroImage() {
           <div className="hero-text">
             <h2>Built for Babies and Busy Bees!</h2>
           </div>
-          <Button className='home-btn'>Get Started</Button>
+          {
+            // eslint-disable-next-line no-nested-ternary
+            user
+              ? <Button className='home-btn' onClick={() => handleClick()}>Get Started</Button>
+              : <Button className="signIn" onClick={() => signInUser(setUser)}>Sign In to Get Started</Button>
+                }
         </Col>
       </Row>
     </Container>
   </div>
   );
 }
+HeroImage.propTypes = {
+  user: PropTypes.any,
+  setUser: PropTypes.func
+};
