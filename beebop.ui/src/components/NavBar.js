@@ -22,8 +22,8 @@ const NavBar = ({ user, setUser }) => {
       <Navbar className="nav" light expand="md">
         <NavbarBrand href="/">
           <img
-          src=""
-          width="200"
+          src="https://user-images.githubusercontent.com/76854545/146072491-2e475bf8-8196-481d-8a3e-45995d0edb01.png"
+          width="170"
           className="d-inline-block align-top"
           alt="beebop logo"
         />
@@ -34,6 +34,32 @@ const NavBar = ({ user, setUser }) => {
             <NavItem>
               <Link className="nav-link" to="/about">About Us</Link>
             </NavItem>
+            {
+              user
+                ? <NavItem>
+                  <Link className="nav-link" to={`/get-started/${user?.id}`}>Get Started</Link>
+                  </NavItem>
+                : ''
+            }
+            {
+              user.isParent === true
+              && <>
+                <NavItem>
+                  <Link className="nav-link" to="/add-baby">Add Your Baby</Link>
+                </NavItem>
+                <NavItem>
+                  <Link className="nav-link" to="/baby">Your Baby</Link>
+                </NavItem>
+              </>
+            }
+            {
+              user.isParent === false
+              && <>
+                <NavItem>
+                  <Link className="nav-link" to="/caregiver-baby">Your Client&apos;s Baby</Link>
+                </NavItem>
+              </>
+            }
           </Nav><div className='auth-btn-container'>
                 {
                   // eslint-disable-next-line no-nested-ternary

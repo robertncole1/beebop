@@ -4,7 +4,7 @@ import { apiConfig } from '../apiKeys';
 const { apiUrl } = apiConfig;
 
 const getTasks = () => new Promise((resolve, reject) => {
-  axios.get(`${apiUrl}/Tasks/`).then((response) => resolve(response.data)).catch(reject);
+  axios.get(`${apiUrl}/Tasks/`).then((response) => resolve((response.data))).catch(reject);
 });
 
 const getSingleTask = (id) => new Promise((resolve, reject) => {

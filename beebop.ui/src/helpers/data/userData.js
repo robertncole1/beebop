@@ -26,7 +26,7 @@ const getSingleUserByGoogleId = (id) => new Promise((resolve, reject) => {
 });
 
 const getParentOrCaregiver = (isParent) => new Promise((resolve, reject) => {
-  axios.get(`${apiUrl}/parents/${isParent}`).then((response) => resolve(response.data)).catch(reject);
+  axios.get(`${apiUrl}/User/parents/${isParent}`).then((response) => resolve(response.data)).catch(reject);
 });
 
 export {

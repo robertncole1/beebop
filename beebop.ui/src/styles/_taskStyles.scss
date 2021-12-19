@@ -1,0 +1,21 @@
+.task-container {
+  margin: 30px 100px;
+  h1, h2, h3, h4, h5, p {
+    text-align: left;
+  }
+}
+
+.task-table td {
+  width: 400px;
+  background-color: white;
+  border: none !important;
+}
+
+.table td {
+  vertical-align: middle !important;
+}
+
+.table {
+  margin-bottom: 0px !important;
+  border-bottom: none !important;
+}
