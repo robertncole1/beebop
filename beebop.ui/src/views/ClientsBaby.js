@@ -6,13 +6,14 @@ function ClientsBaby({ user, babies }) {
   return (
     <>
       <h1 className="page-title">Your Client&apos;s Baby</h1>
-      {babies.length === 0 && <h2>No Baby Attached to Your Profile</h2>}
       <div className="baby-container">
-          {babies?.filter((child) => child.caregiverId === user.id).map((babyObj) => (
-            <BabyCard key={babyObj.id}
-              {...babyObj}
-            />
-          ))}
+        {babies?.filter((child) => child.caregiverId === user.id).map((babyObj) => (
+          <BabyCard key={babyObj.id}
+            user={user}
+            {...babyObj}
+          />
+        ))}
+        {babies.length === 0 && <h2>No Baby Attached to Your Profile</h2>}
       </div>
     </>
   );

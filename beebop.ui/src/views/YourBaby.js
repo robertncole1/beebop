@@ -9,13 +9,14 @@ function YourBaby({ user, babies }) {
   return (
     <>
       <h1 className="page-title">Your Baby</h1>
-      {babies.length === 0 && <h2>No Baby Attached to Your Profile</h2>}
       <div className="baby-container">
-          {babies?.filter((child) => child.userId === user.id).map((babyObj) => (
-            <BabyCard key={babyObj.id}
-              {...babyObj}
-            />
-          ))}
+        {babies?.filter((child) => child.userId === user.id).map((babyObj) => (
+          <BabyCard key={babyObj.id}
+            user={user}
+            {...babyObj}
+          />
+        ))}
+        {babies.length === 0 && <h2>No Baby Attached to Your Profile</h2>}
       </div>
     </>
   );

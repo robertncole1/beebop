@@ -18,10 +18,10 @@ function Routes({
       <Switch>
         <Route exact path="/" component={() => <Home user={user}/>} />
         <Route exact path="/about" component={() => <About user={user}/>} />
-        <Route exact path="/add-baby" component={() => <CreateBaby user={user} setUser={setUser}/>} />
-        <Route path="/tasks/:id" component={() => <Tasks user={user} setUser={setUser}/>} />
-        <Route exact path="/baby" component={() => <YourBaby user={user} setUser={setUser} babies={babies} setBabies={setBabies} />} user={user} babies={babies} />
-        <Route exact path="/caregiver-baby" component={() => <ClientsBaby user={user} setUser={setUser} babies={babies} setBabies={setBabies} />} user={user} babies={babies} />
+        <PrivateRoute exact path="/add-baby" component={() => <CreateBaby user={user} setUser={setUser}/>} user={user} setUser={setUser} />
+        <PrivateRoute path="/tasks/:id" component={() => <Tasks user={user} setUser={setUser}/>} user={user} />
+        <PrivateRoute exact path="/baby" component={() => <YourBaby user={user} setUser={setUser} babies={babies} setBabies={setBabies} />} user={user} babies={babies} />
+        <PrivateRoute exact path="/caregiver-baby" component={() => <ClientsBaby user={user} setUser={setUser} babies={babies} setBabies={setBabies} />} user={user} babies={babies} />
         <PrivateRoute exact path="/get-started/:id" component={() => <GetStarted user={user} setUser={setUser}/>} user={user}/>
       </Switch>
     </div>

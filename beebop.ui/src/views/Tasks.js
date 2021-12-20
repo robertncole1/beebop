@@ -15,14 +15,14 @@ function Tasks() {
 
   return (
     <>
-      <h1 className="page-title">Your Baby&apos;s Tasks</h1>
-      {tasks.length === 0 && <h2>No Tasks for Your Baby</h2>}
+      <h1 className="page-title">Your Tasks</h1>
       <div className="task-container">
         {tasks.map((taskObj) => (
           <TaskCard key={taskObj.id}
             {...taskObj}
           />
         ))}
+        {tasks.length === 0 && <h2>No Tasks for Your Baby</h2>}
       </div>
     </>
   );
