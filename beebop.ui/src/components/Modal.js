@@ -5,8 +5,11 @@ import {
   Modal, ModalBody
 } from 'reactstrap';
 import EditBabyForm from './Forms/EditBabyForm';
+import EditTaskForm from './Forms/EditTask';
 
-const ModalExample = ({ babyToEdit, setBabyToEdit, setEditing }) => {
+const ModalExample = ({
+  babyToEdit, setBabyToEdit, setEditing, setSingleBaby, setBabies, taskToEdit, setTaskToEdit, singleTask, setSingleTask, ...babyObj
+}) => {
   const [modal, setModal] = useState(true);
 
   const toggle = () => setModal(!modal);
@@ -15,7 +18,14 @@ const ModalExample = ({ babyToEdit, setBabyToEdit, setEditing }) => {
     <div>
       <Modal isOpen={modal} toggle={toggle}>
         <ModalBody>
-          <EditBabyForm babyToEdit={babyToEdit} setBabyToEdit={setBabyToEdit} setEditing={setEditing} setModal={setModal}/>
+          {
+            babyToEdit
+            && <EditBabyForm babyToEdit={babyToEdit} setBabyToEdit={setBabyToEdit} setEditing={setEditing} setModal={setModal} setBabies={setBabies} setSingleBaby={setSingleBaby} taskToEdit={taskToEdit} setTaskToEdit={setTaskToEdit}{...babyObj} />
+          }
+          {
+            taskToEdit
+            && <EditTaskForm babyToEdit={babyToEdit} setBabyToEdit={setBabyToEdit} setEditing={setEditing} setModal={setModal} setBabies={setBabies} setSingleBaby={setSingleBaby} taskToEdit={taskToEdit} setTaskToEdit={setTaskToEdit} setSingleTask={setSingleTask} singleTask={singleTask} {...babyObj} />
+          }
         </ModalBody>
       </Modal>
     </div>
@@ -23,9 +33,15 @@ const ModalExample = ({ babyToEdit, setBabyToEdit, setEditing }) => {
 };
 
 ModalExample.propTypes = {
+  singleTask: PropTypes.array,
   babyToEdit: PropTypes.any,
+  setBabies: PropTypes.func,
   setBabyToEdit: PropTypes.func,
-  setEditing: PropTypes.func
+  setSingleBaby: PropTypes.func,
+  setSingleTask: PropTypes.func,
+  setEditing: PropTypes.func,
+  taskToEdit: PropTypes.any,
+  setTaskToEdit: PropTypes.func
 };
 
 export default ModalExample;

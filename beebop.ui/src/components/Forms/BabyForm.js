@@ -42,8 +42,9 @@ export default function BabyForm() {
     createBaby(baby).then((response) => {
       setBaby(response);
     });
-    history.push('/baby');
+    history.push('/create-task');
     setVisible(true);
+    window.location.reload();
   };
 
   return (
@@ -52,17 +53,17 @@ export default function BabyForm() {
           <Col>
           <h2>How to Get Started</h2>
             <p>Use the checkbox to select whether you are a parent or caregiver.</p>
-            <p>IMPORTANT: Caregivers must sign up first in order for the parent to assign their child to a caregiver!</p>
-            <p>If you are a parent, the next step for you is to input your baby&apos;s information to the system. From there, you can assign a caregiver to your baby from a dropdown list. As a caregiver, once the mother assigns their child to you and creates tasks, you can see that informmation within your profile.</p>
+            <p className='bold-text'>IMPORTANT: Caregivers must sign up first in order for the parent to assign their child to a caregiver!</p>
+            <p>If you are a parent, the next step for you is to input your baby&apos;s information to the system. From there, you can assign a caregiver to your baby from a dropdown list.</p>
             <p>If you are a caregiver, once the mother assigns their child to you and creates tasks, you can see that informmation within your profile.</p>
           </Col>
           <Col>
+          <h2>Input Your Baby&apos;s Information</h2>
           <Form
       id='babyForm'
       autoComplete='off'
       onSubmit={handleSubmit}
       className='baby-form'>
-      <Label>Enter in Your Babys Information</Label>
       <Row form>
         <Col md={6}>
           <FormGroup>
@@ -117,4 +118,5 @@ export default function BabyForm() {
 }
 BabyForm.propTypes = {
   user: PropTypes.any,
+  setSingleBaby: PropTypes.func
 };

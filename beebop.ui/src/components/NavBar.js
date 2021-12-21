@@ -50,6 +50,9 @@ const NavBar = ({ user, setUser }) => {
                 <NavItem>
                   <Link className="nav-link" to="/baby">Your Baby</Link>
                 </NavItem>
+                <NavItem>
+                  <Link className="nav-link" to="/create-task">Create a Task</Link>
+                </NavItem>
               </>
             }
             {

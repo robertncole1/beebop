@@ -8,17 +8,20 @@ import {
 import { getSingleBaby } from '../helpers/data/babyData';
 import ModalExample from './Modal';
 
-function BabyCard({ user, ...babyObj }) {
+function BabyCard({
+  user, setBabies, setSingleBaby, ...babyObj
+}) {
   const history = useHistory();
   const [editing, setEditing] = useState(false);
   const [babyToEdit, setBabyToEdit] = useState({});
 
   const handleClickEdit = () => {
-    getSingleBaby(babyObj.id).then((response) => {
+    getSingleBaby(babyObj?.id).then((response) => {
       setBabyToEdit(response);
-      setEditing(true);
+      setEditing((prevState) => !prevState);
     });
   };
+
   const handleClick = () => {
     history.push(`/tasks/${babyObj.id}`);
   };
@@ -40,6 +43,9 @@ function BabyCard({ user, ...babyObj }) {
         babyToEdit={babyToEdit}
         setBabyToEdit={setBabyToEdit}
         setEditing={setEditing}
+        setSingleBaby={setSingleBaby}
+        setBabies={setBabies}
+        {...babyObj}
         />
       }
     </CardBody>
@@ -48,5 +54,7 @@ function BabyCard({ user, ...babyObj }) {
 }
 export default BabyCard;
 BabyCard.propTypes = {
-  user: PropTypes.any
+  user: PropTypes.any,
+  setBabies: PropTypes.func,
+  setSingleBaby: PropTypes.func
 };

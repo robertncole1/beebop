@@ -7,20 +7,21 @@ import { editBaby } from '../../helpers/data/babyData';
 import { getParentOrCaregiver } from '../../helpers/data/userData';
 
 export default function EditBabyForm({
-  setEditing, babyToEdit, setModal
+  babyToEdit, setModal, setSingleBaby
 }) {
   const [baby, setBaby] = useState({});
   const [isCaregiver, setIsCaregiver] = useState([]);
 
   useEffect(() => {
     setBaby({
+      id: babyToEdit?.id,
       name: babyToEdit?.name,
       age: babyToEdit?.age,
       caregiverId: babyToEdit?.caregiverId,
-      userId: babyToEdit.userId,
+      userId: babyToEdit?.userId,
     });
     getParentOrCaregiver(false).then((response) => setIsCaregiver(response));
-  }, [babyToEdit, setEditing]);
+  }, []);
 
   const handleInputChange = (e) => {
     setBaby((prevState) => ({
@@ -31,9 +32,8 @@ export default function EditBabyForm({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    editBaby(babyToEdit.id, baby).then(setBaby);
+    editBaby(babyToEdit?.id, baby).then(setSingleBaby);
     setModal(false);
-    window.location.reload();
   };
   return (
     <Container>
@@ -103,5 +103,6 @@ EditBabyForm.propTypes = {
   babyToEdit: PropTypes.any,
   setBabyToEdit: PropTypes.func,
   setEditing: PropTypes.func,
+  setSingleBaby: PropTypes.func,
   setModal: PropTypes.func
 };

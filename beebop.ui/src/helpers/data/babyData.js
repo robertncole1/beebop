@@ -18,7 +18,9 @@ const createBaby = (babyObj) => new Promise((resolve, reject) => {
 });
 
 const editBaby = (id, babyObj) => new Promise((resolve, reject) => {
-  axios.put(`${apiUrl}/Babies/update/${id}`, babyObj).then(resolve).catch(reject);
+  axios.put(`${apiUrl}/Babies/update/${id}`, babyObj).then(() => {
+    getSingleBaby(id).then(resolve).catch(reject);
+  });
 });
 
 const deleteBaby = (id) => new Promise((resolve, reject) => {

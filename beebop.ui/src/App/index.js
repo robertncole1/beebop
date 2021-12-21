@@ -13,6 +13,7 @@ function App() {
   // When you set up firebase add setUser method and change useState to null.
   const [user, setUser] = useState({});
   const [babies, setBabies] = useState([]);
+  const [singleBaby, setSingleBaby] = useState();
   // Checking for authenticated users. You must set up firebase authentication for this to work!
   useEffect(() => {
     firebase.auth().onAuthStateChanged((authed) => {
@@ -28,15 +29,13 @@ function App() {
 
   useEffect(() => {
     getBabies().then((response) => setBabies(response));
-  }, []);
-
-  console.warn(babies.id);
+  }, [singleBaby]);
 
   return (
     <div className='App'>
       <Router>
         <NavBar user={user} setUser={setUser} babies={babies}/>
-        <Routes user={user} setUser={setUser} babies={babies} setBabies={setBabies} />
+        <Routes user={user} setUser={setUser} babies={babies} setBabies={setBabies} setSingleBaby={setSingleBaby} />
         {/* <Footer/> */}
       </Router>
     </div>

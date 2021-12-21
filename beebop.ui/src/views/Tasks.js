@@ -7,11 +7,12 @@ import TaskCard from '../components/TaskCard';
 
 function Tasks() {
   const [tasks, setTasks] = useState([]);
+  const [singleTask, setSingleTask] = useState();
   const { id } = useParams();
 
   useEffect(() => {
     getBabyTask(id).then((response) => setTasks(response));
-  }, []);
+  }, [singleTask]);
 
   return (
     <>
@@ -19,6 +20,7 @@ function Tasks() {
       <div className="task-container">
         {tasks.map((taskObj) => (
           <TaskCard key={taskObj.id}
+          setSingleTask={setSingleTask}
             {...taskObj}
           />
         ))}
