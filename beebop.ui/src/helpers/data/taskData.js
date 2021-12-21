@@ -24,7 +24,9 @@ const createTask = (taskObj) => new Promise((resolve, reject) => {
 });
 
 const editTask = (id, taskObj) => new Promise((resolve, reject) => {
-  axios.put(`${apiUrl}/Tasks/update/${id}`, taskObj).then(resolve).catch(reject);
+  axios.put(`${apiUrl}/Tasks/update/${id}`, taskObj).then(() => {
+    getSingleTask(id).then(resolve).catch(reject);
+  });
 });
 
 const deleteTask = (id) => new Promise((resolve, reject) => {

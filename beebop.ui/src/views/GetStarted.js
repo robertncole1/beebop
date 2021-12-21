@@ -9,11 +9,11 @@ function GetStarted({ user, setUser }) {
       <div className='about-cont'>
       <Container>
         <Row>
-          <Col>
+        <Col>
           <h2>How to Get Started</h2>
             <p>Use the checkbox to select whether you are a parent or caregiver.</p>
-            <p>IMPORTANT: Caregivers must sign up first in order for the parent to assign their child to a caregiver!</p>
-            <p>If you are a parent, the next step for you is to input your baby&apos;s information to the system. From there, you can assign a caregiver to your baby from a dropdown list. As a caregiver, once the mother assigns their child to you and creates tasks, you can see that informmation within your profile.</p>
+            <p className='bold-text'>IMPORTANT: Caregivers must sign up first in order for the parent to assign their child to a caregiver!</p>
+            <p>If you are a parent, the next step for you is to input your baby&apos;s information to the system. From there, you can assign a caregiver to your baby from a dropdown list.</p>
             <p>If you are a caregiver, once the mother assigns their child to you and creates tasks, you can see that informmation within your profile.</p>
           </Col>
           <Col>

@@ -37,7 +37,7 @@ export default function GetStartedForm({ user, setUser }) {
   return (
     <Form onSubmit={handleSubmit}>
       <Label>
-        Check the box below if you are a parent. If you are a caregiver, please let it unchecked.
+        Check the box below if you are a parent. If you are a caregiver, please leave it unchecked.
       </Label>
         <FormGroup check>
           <Input
