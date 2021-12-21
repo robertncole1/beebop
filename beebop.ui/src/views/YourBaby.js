@@ -20,7 +20,7 @@ function YourBaby({
             {...babyObj}
           />
         ))}
-        {babies.length === 0 && <h2>No Baby Attached to Your Profile</h2>}
+        {babies.length === 0 && <h2 className="page-title">No Baby Attached to Your Profile</h2>}
       </div>
     </>
   );

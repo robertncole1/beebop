@@ -6,7 +6,7 @@ import {
 import { editTask } from '../../helpers/data/taskData';
 
 export default function EditTaskForm({
-  taskToEdit, setModal, setSingleTask
+  user, taskToEdit, setModal, setSingleTask
 }) {
   const [task, setTask] = useState({});
 
@@ -34,75 +34,108 @@ export default function EditTaskForm({
     setModal(false);
   };
   return (
-    <Container>
-    <Row>
+    <>
+    {
+      user.isParent === true
+      && <Container>
+      <Row>
+          <Col>
+          <h2>Update a Task for Your Baby</h2>
+          <Form
+            id='babyForm'
+            autoComplete='off'
+            onSubmit={handleSubmit}
+            className='baby-form'>
+            <Label>Enter in New Task Info for Your Baby</Label>
+      <Row form>
         <Col>
-        <h2>Update a Task for Your Baby</h2>
-        <Form
-          id='babyForm'
-          autoComplete='off'
-          onSubmit={handleSubmit}
-          className='baby-form'>
-          <Label>Enter in New Task Info for Your Baby</Label>
-    <Row form>
-      <Col>
-        <FormGroup>
-          <Label for="name">Task Name</Label>
-          <Input
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Task Name"
-            value={task.name}
-            onChange={handleInputChange}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label for="description">Description</Label>
-          <Input
-            type="text"
-            name="description"
-            id="description"
-            value={task.description}
-            onChange={handleInputChange}
-            placeholder="Description"
-          />
-        </FormGroup>
-      </Col>
-    </Row>
-    <Row form>
-      <Col md={6}>
-      <FormGroup>
-          <Label for="scheduled">Scheduled</Label>
-          <Input
-            type="time"
-            name="scheduled"
-            id="scheduled"
-            value={task.scheduled}
-            onChange={handleInputChange}
-            placeholder="Scheduled"
-          />
-        </FormGroup>
-      </Col>
-      <Col md={6}>
-      <FormGroup>
-          <Label for="completed">Completed</Label>
-          <Input
-            type="time"
-            name="completed"
-            id="completed"
-            value={task.completed}
-            onChange={handleInputChange}
-            placeholder="Time Completed"
-          />
-        </FormGroup>
-      </Col>
-    </Row>
-    <Button>Update Task</Button>
-  </Form>
+          <FormGroup>
+            <Label for="name">Task Name</Label>
+            <Input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Task Name"
+              value={task.name}
+              onChange={handleInputChange}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="description">Description</Label>
+            <Input
+              type="text"
+              name="description"
+              id="description"
+              value={task.description}
+              onChange={handleInputChange}
+              placeholder="Description"
+            />
+          </FormGroup>
         </Col>
       </Row>
-    </Container>
+      <Row form>
+        <Col md={6}>
+        <FormGroup>
+            <Label for="scheduled">Scheduled</Label>
+            <Input
+              type="time"
+              name="scheduled"
+              id="scheduled"
+              value={task.scheduled}
+              onChange={handleInputChange}
+              placeholder="Scheduled"
+            />
+          </FormGroup>
+        </Col>
+        <Col md={6}>
+        <FormGroup>
+            <Label for="completed">Completed</Label>
+            <Input
+              type="time"
+              name="completed"
+              id="completed"
+              value={task.completed}
+              onChange={handleInputChange}
+              placeholder="Time Completed"
+            />
+          </FormGroup>
+        </Col>
+      </Row>
+      <Button>Update Task</Button>
+    </Form>
+          </Col>
+        </Row>
+      </Container>
+    }
+    {
+      user.isParent === false
+      && <Container>
+      <Row>
+          <Col>
+          <h2>Checkoff a Task for Your Client&apos;s Baby</h2>
+          <Form
+            id='babyForm'
+            autoComplete='off'
+            onSubmit={handleSubmit}
+            className='baby-form'>
+        <FormGroup>
+            <Label for="completed">Completed</Label>
+            <Input
+              type="time"
+              name="completed"
+              id="completed"
+              value={task.completed}
+              onChange={handleInputChange}
+              placeholder="Time Completed"
+            />
+          </FormGroup>
+      <Button>Checkoff Task</Button>
+    </Form>
+          </Col>
+        </Row>
+      </Container>
+    }
+    </>
   );
 }
 EditTaskForm.propTypes = {

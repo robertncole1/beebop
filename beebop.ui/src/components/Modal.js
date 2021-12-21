@@ -8,7 +8,7 @@ import EditBabyForm from './Forms/EditBabyForm';
 import EditTaskForm from './Forms/EditTask';
 
 const ModalExample = ({
-  babyToEdit, setBabyToEdit, setEditing, setSingleBaby, setBabies, taskToEdit, setTaskToEdit, singleTask, setSingleTask, ...babyObj
+  user, babyToEdit, setBabyToEdit, setEditing, setSingleBaby, setBabies, taskToEdit, setTaskToEdit, singleTask, setSingleTask, ...babyObj
 }) => {
   const [modal, setModal] = useState(true);
 
@@ -24,7 +24,7 @@ const ModalExample = ({
           }
           {
             taskToEdit
-            && <EditTaskForm babyToEdit={babyToEdit} setBabyToEdit={setBabyToEdit} setEditing={setEditing} setModal={setModal} setBabies={setBabies} setSingleBaby={setSingleBaby} taskToEdit={taskToEdit} setTaskToEdit={setTaskToEdit} setSingleTask={setSingleTask} singleTask={singleTask} {...babyObj} />
+            && <EditTaskForm user={user} babyToEdit={babyToEdit} setBabyToEdit={setBabyToEdit} setEditing={setEditing} setModal={setModal} setBabies={setBabies} setSingleBaby={setSingleBaby} taskToEdit={taskToEdit} setTaskToEdit={setTaskToEdit} setSingleTask={setSingleTask} singleTask={singleTask} {...babyObj} />
           }
         </ModalBody>
       </Modal>
@@ -33,6 +33,7 @@ const ModalExample = ({
 };
 
 ModalExample.propTypes = {
+  user: PropTypes.any,
   singleTask: PropTypes.array,
   babyToEdit: PropTypes.any,
   setBabies: PropTypes.func,

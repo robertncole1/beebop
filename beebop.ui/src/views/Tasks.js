@@ -5,14 +5,15 @@ import PropTypes from 'prop-types';
 import { getBabyTask } from '../helpers/data/taskData';
 import TaskCard from '../components/TaskCard';
 
-function Tasks() {
+function Tasks({ user }) {
   const [tasks, setTasks] = useState([]);
   const [singleTask, setSingleTask] = useState();
+  const [deleteTask, setdeleteTask] = useState();
   const { id } = useParams();
 
   useEffect(() => {
     getBabyTask(id).then((response) => setTasks(response));
-  }, [singleTask]);
+  }, [singleTask, deleteTask]);
 
   return (
     <>
@@ -20,11 +21,14 @@ function Tasks() {
       <div className="task-container">
         {tasks.map((taskObj) => (
           <TaskCard key={taskObj.id}
+          user={user}
+          setTasks={setTasks}
+          setdeleteTask={setdeleteTask}
           setSingleTask={setSingleTask}
             {...taskObj}
           />
         ))}
-        {tasks.length === 0 && <h2>No Tasks for Your Baby</h2>}
+        {tasks.length === 0 && <h2 className="page-title">No Tasks for Your Baby</h2>}
       </div>
     </>
   );
