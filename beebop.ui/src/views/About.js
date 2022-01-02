@@ -1,10 +1,18 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   Button, Col, Container, Row
 } from 'reactstrap';
+import { signInUser } from '../helpers/auth';
 
-function About() {
+function About({ user, setUser }) {
+  const history = useHistory();
+
+  const handleClick = () => {
+    history.push(`/get-started/${user?.id}`);
+  };
+
   return (
     <>
       <div className='about-cont'>
@@ -19,8 +27,8 @@ function About() {
           </Col>
           <Col>
             <h2>About Us</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Beebop started as a conversation between my mother, who is a full-time nanny and my sister who is expecting her first child. They both stress the importance of the parent/caregiver relationship and how that can shape the development of the child. Beebop takes that relationship very seriously. We are a scheduling app designed to keep your baby on track no matter who is taking care of them. We got you covered.</p>
+            <p>Family is at the heart of everything we do and we take child development very seriously. So, beebop allows you to see how your child is being cared for on a daily basis. As a parent, you can create tasks and activites for your child and caregiver to do together! As a caregiver, you can stay on task and keep track of everything you have acomplished today. We know how challenging child care can be. Beebop is here to help!</p>
           </Col>
         </Row>
       </Container>
@@ -29,7 +37,12 @@ function About() {
         <div className="hero-text">
           <h2>Time to get your baby on track!</h2>
         </div>
-          <Button className='home-btn'>Get Started</Button>
+        {
+            // eslint-disable-next-line no-nested-ternary
+            user
+              ? <Button className='cta-btn' onClick={() => handleClick()}>Get Started</Button>
+              : <Button className="cta-btn" onClick={() => signInUser(setUser)}>Sign In to Get Started</Button>
+        }
       </div>
     </>
   );
@@ -38,5 +51,6 @@ function About() {
 export default About;
 
 About.propTypes = {
-  user: PropTypes.any
+  user: PropTypes.any,
+  setUser: PropTypes.func
 };

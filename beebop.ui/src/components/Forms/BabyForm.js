@@ -109,7 +109,7 @@ export default function BabyForm() {
       </FormGroup>
         </Col>
       </Row>
-      <Button>Add Baby</Button>
+      <Button className="primary-btn">Add Baby</Button>
     </Form>
           </Col>
         </Row>

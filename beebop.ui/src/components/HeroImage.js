@@ -26,8 +26,8 @@ export default function HeroImage({ user, setUser }) {
           {
             // eslint-disable-next-line no-nested-ternary
             user
-              ? <Button className='home-btn' onClick={() => handleClick()}>Get Started</Button>
-              : <Button className="signIn" onClick={() => signInUser(setUser)}>Sign In to Get Started</Button>
+              ? <Button className="primary-btn" onClick={() => handleClick()}>Get Started</Button>
+              : <Button className="primary-btn" onClick={() => signInUser(setUser)}>Sign In to Get Started</Button>
                 }
         </Col>
       </Row>

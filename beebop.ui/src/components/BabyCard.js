@@ -35,9 +35,9 @@ function BabyCard({
       </CardText>
       {
         user.isParent === true
-        && <Button variant="primary" onClick={() => handleClickEdit('edit')}>Edit Your Baby&apos;s Information</Button>
+        && <Button className="secondary-btn" onClick={() => handleClickEdit('edit')}>Edit Your Baby&apos;s Information</Button>
       }
-      <Button variant="primary" onClick={() => handleClick()}>View Your Baby&apos;s Tasks</Button>
+      <Button className="primary-btn" onClick={() => handleClick()}>View Your Baby&apos;s Tasks</Button>
       {
         editing && <ModalExample
         babyToEdit={babyToEdit}
