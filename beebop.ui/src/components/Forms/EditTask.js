@@ -129,7 +129,7 @@ export default function EditTaskForm({
               placeholder="Time Completed"
             />
           </FormGroup>
-      <Button>Checkoff Task</Button>
+      <Button className="primary-btn">Checkoff Task</Button>
     </Form>
           </Col>
         </Row>

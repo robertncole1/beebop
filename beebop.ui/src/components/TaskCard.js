@@ -35,10 +35,10 @@ export default function TaskCard({
             <td>{taskObj.description}</td>
             <td>Time Scheduled: {taskObj.scheduled}</td>
             <td>Time Completed: {taskObj.completed}</td>
-            <td><Button onClick={() => handleClickEdit('edit')}>Update Task</Button></td>
+            <td><Button className="primary-btn" onClick={() => handleClickEdit('edit')}>Update Task</Button></td>
             {
               user.isParent === true
-              && <td><Button onClick={() => handleClickEdit('delete')}>Delete Task</Button></td>
+              && <td><Button className="secondary-btn" onClick={() => handleClickEdit('delete')}>Delete Task</Button></td>
             }
           </tr>
         </tbody>

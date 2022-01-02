@@ -51,7 +51,7 @@ export default function GetStartedForm({ user, setUser }) {
             Are you a Parent?
           </Label>
       </FormGroup>
-      <Button>Next Step</Button>
+      <Button className="primary-btn">Next Step</Button>
     </Form>
   );
 }

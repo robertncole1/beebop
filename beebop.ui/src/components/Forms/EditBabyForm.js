@@ -91,7 +91,7 @@ export default function EditBabyForm({
       </FormGroup>
         </Col>
       </Row>
-      <Button>Submit</Button>
+      <Button className="primary-btn">Submit</Button>
     </Form>
           </Col>
         </Row>

@@ -87,7 +87,7 @@ export default function TaskForm({ user, babies }) {
         </Col>
       </Row>
       <Row form>
-        <Col md={6}>
+        <Col>
         <FormGroup>
             <Label for="scheduled">Scheduled</Label>
             <Input
@@ -97,19 +97,6 @@ export default function TaskForm({ user, babies }) {
               value={task.scheduled}
               onChange={handleInputChange}
               placeholder="Scheduled"
-            />
-          </FormGroup>
-        </Col>
-        <Col md={6}>
-        <FormGroup>
-            <Label for="completed">Completed</Label>
-            <Input
-              type="time"
-              name="completed"
-              id="completed"
-              value={task.completed}
-              onChange={handleInputChange}
-              placeholder="Time Completed"
             />
           </FormGroup>
         </Col>
@@ -131,7 +118,7 @@ export default function TaskForm({ user, babies }) {
       </FormGroup>
         </Col>
       </Row>
-      <Button>Add Task</Button>
+      <Button className="primary-btn">Add Task</Button>
     </Form>
           </Col>
         </Row>

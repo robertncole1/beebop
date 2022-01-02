@@ -30,7 +30,7 @@ const NavBar = ({ user, setUser }) => {
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
+          <Nav className="ml-auto" navbar>
             <NavItem>
               <Link className="nav-link" to="/about">About Us</Link>
             </NavItem>
@@ -48,10 +48,10 @@ const NavBar = ({ user, setUser }) => {
                   <Link className="nav-link" to="/add-baby">Add Your Baby</Link>
                 </NavItem>
                 <NavItem>
-                  <Link className="nav-link" to="/baby">Your Baby</Link>
+                  <Link className="nav-link" to="/create-task">Create a Task</Link>
                 </NavItem>
                 <NavItem>
-                  <Link className="nav-link" to="/create-task">Create a Task</Link>
+                  <Link className="nav-link" to="/baby">Your Baby</Link>
                 </NavItem>
               </>
             }
@@ -68,9 +68,9 @@ const NavBar = ({ user, setUser }) => {
                   // eslint-disable-next-line no-nested-ternary
                   user
                     ? <NavItem className='nav-cart-signout'>
-                        <Button className="signOut" onClick={signOutUser}>Sign Out</Button>
+                        <Button className="secondary-btn" onClick={signOutUser}>Sign Out</Button>
                       </NavItem>
-                    : <Button className="signIn" onClick={() => signInUser(setUser)}>Sign In</Button>
+                    : <Button className="primary-btn" onClick={() => signInUser(setUser)}>Sign In</Button>
                 }
               </div>
         </Collapse>

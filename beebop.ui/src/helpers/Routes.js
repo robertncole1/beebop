@@ -18,7 +18,7 @@ function Routes({
     <div>
       <Switch>
         <Route exact path="/" component={() => <Home user={user}/>} />
-        <Route exact path="/about" component={() => <About user={user}/>} />
+        <Route exact path="/about" component={() => <About user={user} setUser={setUser}/>} />
         <PrivateRoute exact path="/add-baby" component={() => <CreateBaby user={user} setUser={setUser} setSingleBaby={setSingleBaby}/>} user={user} setUser={setUser} setSingleBaby={setSingleBaby} />
         <PrivateRoute path="/tasks/:id" component={() => <Tasks user={user} setUser={setUser}/>} user={user} />
         <PrivateRoute exact path="/baby" component={() => <YourBaby user={user} setUser={setUser} babies={babies} setBabies={setBabies} setSingleBaby={setSingleBaby} />} user={user} babies={babies} setSingleBaby={setSingleBaby} />
