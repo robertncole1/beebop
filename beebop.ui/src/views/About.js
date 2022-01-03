@@ -20,7 +20,7 @@ function About({ user, setUser }) {
         <Row>
           <Col>
           <img
-            src="https://user-images.githubusercontent.com/76854545/146611653-325212df-e46a-4ad8-83bd-fe911edd7367.png"
+            src="https://user-images.githubusercontent.com/76854545/147959864-b5da59eb-6e83-4400-a10f-1f32732f464b.png"
             width="600"
             alt="beebop about us"
           />
