@@ -11,6 +11,14 @@ Beebop is an app that will allow a caregiver or parent to manage their baby’s 
 - As a caregiver, he or she will be able to view and check off tasks as they are created so that the parent can see when these tasks are completed.
 - An unauthenticated user is able to view the homepage and about page
 
+### Screenshots
+![image](https://user-images.githubusercontent.com/76854545/147961979-fda2b653-2ff1-4ec4-84c5-2b339e732d22.png)
+![image (4)](https://user-images.githubusercontent.com/76854545/147961991-e27f9667-8bf1-4a4e-8b65-38b338aa51d5.png)
+![image (2)](https://user-images.githubusercontent.com/76854545/147962003-6c3ac5a1-01ea-4433-8052-80be66682496.png)
+![image (1)](https://user-images.githubusercontent.com/76854545/147962016-fc3f3e0d-09cc-4c27-851d-4f82a843d7fc.png)
+![image (3)](https://user-images.githubusercontent.com/76854545/147962033-1e4b8251-3d1e-4541-b4fc-820ecd38ba90.png)
+
+
 ### Mockups
 https://xd.adobe.com/view/6c79d146-f577-4c95-81f1-da50606c3cb5-392a/?hints=off
 
