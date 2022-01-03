@@ -5,7 +5,7 @@ Beebop is an app that will allow a caregiver or parent to manage their baby’s 
 ### Features
 - Once you login, you will have the ability to select whether you are a parent or a caregiver.
 - A caregiver will sign in and create their profile and await for the parent to connect their account to the caregivers account.
-- The parent, once logged in, has the ability to select their caregiver from a list of caregivers.
+- The parent, once logged in, has the ability to enter in their baby's information and select their caregiver from a list of caregivers.
 - The parent can then create tasks for the caregiver to view and check off.
 - The parent also has the ability to edit tasks as needed.
 - As a caregiver, he or she will be able to view and check off tasks as they are created so that the parent can see when these tasks are completed.
