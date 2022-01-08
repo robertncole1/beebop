@@ -13,7 +13,7 @@ function ClientsBaby({ user, babies }) {
             {...babyObj}
           />
         ))}
-        {babies.length === 0 && <h2 className="page-title">No Baby Attached to Your Profile</h2>}
+        {babies.filter((child) => child.caregiverId === user.id).length === 0 && <h2 className="page-title">Waiting on a parent to assign you to their child.</h2>}
       </div>
     </>
   );
